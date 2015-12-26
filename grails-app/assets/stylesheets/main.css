@@ -567,3 +567,9 @@ a.skip {
     position: absolute;
     left: -9999px;
 }
+
+/* Books */
+.bookcontainer {
+    border: 1px solid #CCCCCC;
+    margin: 10px;
+}

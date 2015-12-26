@@ -6,7 +6,7 @@
 
 <body>
 <g:each in="${users}" var="userInstance">
-        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+        <tr>
             <td>${fieldValue(bean: userInstance, field: "id")}</td>
             <td>${fieldValue(bean: userInstance, field: "username")}</td>
             <td>${fieldValue(bean: userInstance, field: "password")}</td>
