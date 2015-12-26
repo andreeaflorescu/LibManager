@@ -12,4 +12,12 @@ class BooksController {
     	String isbn, URL path, String[] authors) {
     	
     }
+
+    def renderAdminBooksPage() {
+        render "your are admin"
+    }
+
+    def renderClientBooksPage() {
+        render "you are a reader"
+    }
 }

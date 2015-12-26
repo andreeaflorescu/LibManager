@@ -8,5 +8,6 @@ class Users {
 	
     static constraints = {
     	role(inList: ["admin", "reader"])
+    	grade(nullable: true)
     }
 }
