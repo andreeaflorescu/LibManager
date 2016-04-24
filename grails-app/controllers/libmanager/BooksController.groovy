@@ -8,11 +8,6 @@ class BooksController {
 
     }
 
-    def addBook(String title, int numberOfPages, String publisher, 
-    	String isbn, URL path, String[] authors) {
-    	
-    }
-
     def renderAdminBooksPage() {
         render (view: "add_books")
     }
@@ -30,7 +25,15 @@ class BooksController {
     }
 
     def renderClientBooksPage() {
-        render "you are a reader"
+        render (view: "find_books")
+    }
+
+    def renderClientReservationsPage() {
+        render (view: "view_reserved_books")
+    }
+
+    def renderClientLoansPage() {
+        render (view: "view_loaned_books")
     }
 
     def uploadCoverPhoto() {
@@ -45,5 +48,26 @@ class BooksController {
             photoInstance.save()
         }
         redirect (action:'list')
+    }
+
+    def addBook() {
+
+        def file = request.getFile('file')
+        if(file.empty) {
+            flash.message = "File cannot be empty"
+        } else {
+            // Create photo instance
+            def photoInstance = new Photo()
+            photoInstance.filename = file.originalFilename
+            photoInstance.fullPath = grailsApplication.config.uploadFolder + photoInstance.filename
+            file.transferTo(new File(photoInstance.fullPath))
+            photoInstance.save()
+
+            // find publisher; if is not found, create one
+            def publisher = Publisher.findByName(params.publisher)
+        }
+
+        println params;
+        render "bla";
     }
 }

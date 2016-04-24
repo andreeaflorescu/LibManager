@@ -52,6 +52,9 @@ grails:
             maxsize: 1000
     controllers:
         defaultScope: singleton
+        upload:
+            maxFileSize: 10000000000000
+            maxRequestSize: 10000000000000
     converters:
         encoding: UTF-8
     views:
@@ -86,6 +89,7 @@ dataSource:
 
 environments:
     development:
+        uploadFolder: "/home/andreea/Libmanager/grails-app/assets/images/bookcover" 
         dataSource:
             dbCreate: update
             username: "root"

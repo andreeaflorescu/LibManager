@@ -354,6 +354,16 @@ fieldset.embedded legend {
     color: #cc0000;
 }
 
+.addbutton {
+    background-image: url(../images/skin/add.png);
+    background-repeat: no-repeat;
+    /*width: 16px;*/
+    /*height: 16px;*/
+}
+
+.addbutton a {
+    margin-left: 20px;
+}
 .error input:focus, .error select:focus, .error textarea:focus {
        -moz-box-shadow: 0 0 0.5em #ffaaaa;
     -webkit-box-shadow: 0 0 0.5em #ffaaaa;

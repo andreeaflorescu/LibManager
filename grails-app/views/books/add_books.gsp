@@ -16,9 +16,10 @@
 		<div class="content scaffold-create" role="main">
 			<h1>Add Book</h1>
 			<g:if test="${flash.message}"><div class="message" role="status">${flash.message}</div></g:if>
-			<g:uploadForm action="upload">
+			<g:form method="post" enctype="multipart/form-data" action="addBook">
 				<fieldset class="form">
-					<table>
+					<input type="hidden" name="nrauthors" value="1">
+					<table id="bookinputs">
 						<tr>
 
 							<td><label>Cover Photo</label></td>
@@ -32,11 +33,20 @@
 							<td><label>Number of Pages</label></td>
 							<td><input type="text" name="nr_pages" placeholder="Number of Pages"></td>
 						</tr>
-						<tr>
+						<tr class="authors">
 							<td><label>Authors</label></td>
-							<td><input type="text" name="author#1" placeholder="Author Name"/></td>
+							<td>
+								<input type="text" name="author#1" placeholder="Author Name"/>
+								
+							</td>
+							<td>
+								<div class="addbutton" >
+									<a href="#" onclick="addAuthor()">Add More Authors</a>
+								</div>
+
+							</td>
 						</tr>
-						<tr>
+						<tr id="publisher">
 							<td><label>Publisher</label></td>
 							<td><input type="text" name="publisher" placeholder="Publisher"></td>
 						</tr>
@@ -61,9 +71,9 @@
 					</table>
 				</fieldset>
 				<fieldset class="buttons">
-					<g:submitButton name="upload" class="save" value="Add Book"/>
+					<g:submitButton action="addBook" name="upload" class="save" value="Add Book"/>
 				</fieldset>
-			</g:uploadForm>
+			</g:form>
 		</div>
 
 		<div class="content scaffold-create" role="main">
@@ -81,6 +91,23 @@
 				</fieldset>
 			</g:uploadForm>
 		</div>
-
+		<script>
+			function addAuthor() {
+			    nrOfAuthors = parseInt(document.getElementsByName('nrauthors')[0].value);
+			    nrOfAuthors++;
+			    document.getElementsByName('nrauthors')[0].value = nrOfAuthors;
+			    
+			    var authors = document.getElementsByClassName('authors');
+			    var refNode = authors[authors.length -1 ];
+			    var newAuthor = document.createElement("tr");
+			    newAuthor.innerHTML = '<tr class="authors">' +
+									   '<td></td>' + 
+										'<td>' +
+										'<input type="text" name="author#' + nrOfAuthors + '"' +
+										' placeholder="Author Name"/>' +
+										'</td></tr>';
+			    refNode.parentNode.insertBefore(newAuthor, refNode.nextSibling);
+			}
+		</script>
 	</body>
 </html>

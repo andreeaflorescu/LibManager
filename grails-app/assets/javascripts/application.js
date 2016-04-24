@@ -18,3 +18,7 @@ if (typeof jQuery !== 'undefined') {
         });
     })(jQuery);
 }
+
+function addAuthor() {
+	console.log("dadasa");
+}
