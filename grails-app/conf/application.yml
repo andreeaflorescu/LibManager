@@ -89,7 +89,7 @@ dataSource:
 
 environments:
     development:
-        uploadFolder: "/home/andreea/Libmanager/grails-app/assets/images/bookcover" 
+        uploadFolder: "/home/andreea/LibManager/grails-app/assets/images/bookcover/" 
         dataSource:
             dbCreate: update
             username: "root"
