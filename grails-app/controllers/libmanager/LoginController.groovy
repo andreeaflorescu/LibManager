@@ -43,6 +43,7 @@ class LoginController {
             def user = Users.findByUsername(params.username)
             if (user) {
                 if (user.password == params.password) {
+                    session.username = user.username
                     redirectUser(user)
                 } else {
                     println "Wrong password"
@@ -112,6 +113,7 @@ class LoginController {
             }
         } else {
             println "Succesful created user; redirect to page;"
+            session.username = userSave.username
             redirectUser(userSave)
         }
     }
