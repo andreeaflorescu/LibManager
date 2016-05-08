@@ -3,7 +3,7 @@ package libmanager
 class Books {
 	String isbn;
 	String title;
-	URL cover;
+	Photo cover;
 	int pages;
 
 	static hasOne = [publisher: Publisher]
